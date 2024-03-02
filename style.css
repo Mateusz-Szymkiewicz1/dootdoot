@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica';
 }
 body{
     background: rgb(34, 34, 36);
@@ -15,44 +16,29 @@ body{
     width: 50vw;
     max-width: 800px;
     aspect-ratio: 1;
+    max-height: 90%;
     border: 2px solid #ffffff54;
     border-radius: 3px;
     position: relative;
-}
-.dot{
-    background: #ffffff;
-    position: absolute;
-    height: 12px;
-    width: 12px;
-    left: 0;
-    bottom: 0;
-    border-radius: 50%;
-    transform: -50%, -50%;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7),
-    0 0 15px rgba(255, 255, 255, 0.7),
-    0 0 25px rgba(255, 255, 255, 0.7),
-    0 0 70px rgba(255, 255, 255, 0.7)
-    ;
-}
-.xline{
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #fff, transparent);
-    position: absolute;
-    bottom: 0%;
-    left: 0;
-}
-.yline{
-    height: 100%;
-    width: 3px;
-    background: linear-gradient(0deg, transparent, #fff, transparent);
-    position: absolute;
-    top: 0;
-    left: 0;
+    overflow: hidden;
+    cursor: grab;
 }
 canvas{
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     padding: 20px;
+    image-rendering: pixelated;
+}
+.timer{
+    background: #404040;
+    color: #fff;
+    font-size: 30px;
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
 }
