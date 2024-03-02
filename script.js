@@ -3,7 +3,7 @@ const ctx = c.getContext("2d");
 ctx.lineWidth = 2;
 ctx.font = "10px serif";
 
-let ilosc_kropek = window.prompt("Podaj liczbę kropek:","");
+let ilosc_kropek = window.prompt("Podaj liczbę kropek:","") || 50;
 let dots = [];
 
 while(dots.length < ilosc_kropek){ // Losowanie kropek
@@ -48,15 +48,21 @@ function distance(a,b){ // Zwraca dystans między dwoma punktami
    }
 }
 
-// Pozbywa się wszystkich punktów które nie są pomiędzy A i B, które nigdy nie będą użyte
+// Pozbywa się wszystkich punktów oddalających od B
+function delete_unused_points(point){
+    const distance_from_point_to_b = distance(point,b) 
+    dots = dots.filter(function(el) {
+        return distance(b , el) <= distance_from_point_to_b
+    })
+}
+
 const distance_from_a_to_b = distance(a,b) 
+delete_unused_points(a)
 dots = dots.filter(function(el) {
     return distance(a , el) <= distance_from_a_to_b && !el.a
-}).filter(function(el) {
-    return distance(b , el) <= distance_from_a_to_b
 })
 
-dots.forEach(el => { // Rysowanie punktów
+dots.forEach(el => { // Rysowanie możliwych do wykorzystania punktów
     ctx.strokeStyle = "White";
     ctx.beginPath();
     ctx.moveTo(el.x, el.y);
@@ -69,12 +75,12 @@ let current_point = { x: a.x, y: a.y}
 ctx.strokeStyle = "Green";
 
 // Wyliczanie drogi
-while(current_point.x != b.x && current_point.y != b.y){
-    dots.sort(function(d1, d2){
+while(current_point.x != b.x || current_point.y != b.y){
+    delete_unused_points(current_point) // Pozbywamy się punktów oddalających od B
+    dots.sort(function(d1, d2){ // Sortujemy wszystkie punkty od najbliższego do najdalszego
         return distance(current_point, d1)-distance(current_point, d2)
     })
-    console.log([...dots])
-    ctx.beginPath();
+    ctx.beginPath(); // Rysujemy linie do najbliższego punktu
     ctx.moveTo(current_point.x, current_point.y);
     ctx.lineTo(dots[0].x, dots[0].y);
     ctx.stroke();
