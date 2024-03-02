@@ -18,9 +18,9 @@ while(dots.length < ilosc_kropek){ // Losowanie kropek
 }
 
 // Losowanie punktów A i B
-let a = dots[Math.floor(Math.random() * dots.length)];
+const a = dots[Math.floor(Math.random() * dots.length)];
 let b = dots[Math.floor(Math.random() * dots.length)];
-while(a.x == b.x || a.y == b.y){ // Zapobiega wybraniu tego samego punktu dla A i B
+while(a.x == b.x && a.y == b.y){ // Zapobiega wybraniu tego samego punktu dla A i B
     b = dots[Math.floor(Math.random() * dots.length)];
 }
 a.a = true;
