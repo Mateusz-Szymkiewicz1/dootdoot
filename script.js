@@ -133,3 +133,11 @@ main.addEventListener('wheel', function (e) {
         c.style.transform = `scale(${current_scale-0.1})`;
     }
 });
+
+// let quote = document.querySelector('.quote');
+
+// window.addEventListener('load', function(){
+//     this.setTimeout({
+//         quote.style.opacity = "1";
+//     }, 2000)
+// })
