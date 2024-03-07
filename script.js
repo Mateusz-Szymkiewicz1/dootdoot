@@ -12,8 +12,8 @@ const start = Date.now(); // Liczenie czasu
 
 while (dots.length < ilosc_kropek) { // Losowanie kropek
     let obj = {
-        x: Math.floor(Math.random() * (c.width-8)) + 10,
-        y: Math.floor(Math.random() * (c.height-5)) + 10
+        x: Math.floor(Math.random() * (c.width-20)) + 10,
+        y: Math.floor(Math.random() * (c.height-20)) + 10
     }
     if (dots.find(({x,y}) => x == obj.x && y == obj.y)) {
         continue;
