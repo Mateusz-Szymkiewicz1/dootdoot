@@ -60,4 +60,4 @@ function hamster_say(){
 
 setInterval(function(){
   hamster_say();
-}, 1000)
+}, 5000)
